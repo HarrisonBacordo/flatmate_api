@@ -1,7 +1,7 @@
 import uuid
 from argon2 import PasswordHasher
 from sqlmodel import select
-from app.dependencies import SessionDep
+from app.core.deps import SessionDep
 from app.models.user import User, UserCreate
 
 

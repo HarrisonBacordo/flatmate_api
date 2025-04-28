@@ -4,10 +4,10 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 from argon2 import PasswordHasher
 from app.core.security import create_access_token
-from app.dependencies import SessionDep
+from app.core.deps import SessionDep
 from app.models.user import User, UserRegister
 from app import crud
-from app.config import settings
+from app.core.config import settings
 from app.models.token import Token
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -23,7 +23,7 @@ def create_user(session: SessionDep, form_data: Annotated[UserRegister, Depends(
     return user
 
 
-@router.post("/login")
+@router.post("/login/access-token")
 def login(
     session: SessionDep, form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
 ) -> Token:

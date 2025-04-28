@@ -1,6 +1,6 @@
 import uuid
 from fastapi import APIRouter, Depends
-from app.dependencies import SessionDep
+from app.core.deps import SessionDep
 from app.models.chore import Chore
 
 

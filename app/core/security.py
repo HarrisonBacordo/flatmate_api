@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from jose import jwt
-from app.config import settings
+from app.core.config import settings
 
 
 def create_access_token(subject: str, expires_delta: timedelta = None) -> str:

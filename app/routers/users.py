@@ -1,6 +1,6 @@
 import uuid
 from fastapi import APIRouter
-from app.dependencies import SessionDep
+from app.core.deps import SessionDep
 from app.models.user import User
 
 router = APIRouter(prefix="/users", tags=["users"])
