@@ -1,7 +1,7 @@
 from typing import Annotated
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-import jwt
+from jose import jwt
 from pydantic import ValidationError
 from app.core.db import engine
 from sqlmodel import Session

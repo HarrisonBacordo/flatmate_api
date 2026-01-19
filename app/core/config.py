@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     POSTGRES_USER: str = "harrisonbacordo"
     POSTGRES_PASSWORD: str = "postgres"
     POSTGRES_HOST: str = "localhost"
-    POSTGRES_PORT: int = 54320
+    POSTGRES_PORT: int = 5432
     POSTGRES_DB: str = "flatmate-db"
 
     SECRET_KEY: str = secrets.token_urlsafe(32)
