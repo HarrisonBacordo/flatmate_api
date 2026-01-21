@@ -24,7 +24,7 @@ def get_user_by_id(session: SessionDep, id: uuid.UUID) -> User | None:
     return session.get(User, id)
 
 
-def authenticate_user(session: SessionDep, email: str, password: str) -> User | None:
+def authenticate_user(session: SessionDep, email: str, password: str) -> User | bool:
     user = get_user_by_email(session, email)
     if not user:
         return False

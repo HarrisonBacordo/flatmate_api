@@ -5,7 +5,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from argon2 import PasswordHasher
 from app.core.security import create_access_token
 from app.core.deps import SessionDep
-from app.models.user import User, UserRegister
+from app.models.user import User, UserRegister, UserCreate
 from app import crud
 from app.core.config import settings
 from app.models.token import Token
@@ -19,7 +19,8 @@ def create_user(session: SessionDep, form_data: Annotated[UserRegister, Depends(
     if user:
         raise HTTPException(status_code=400, detail="User already exists")
 
-    user = crud.create_user(session, form_data)
+    user_create = UserCreate(**form_data.model_dump())
+    user = crud.create_user(session, user_create)
     return user
 
 
@@ -36,4 +37,4 @@ def login(
     elif not user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-    return Token(access_token=create_access_token(user.id, access_token_expires))
+    return Token(access_token=create_access_token(str(user.id), access_token_expires))

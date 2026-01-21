@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from app.routers import auth, chores, users
+from app.routers import auth, calendar_events, chores, flats, groceries, users
 from app.core.db import create_db_and_tables, engine
 
 
@@ -15,3 +15,6 @@ app = FastAPI(lifespan=lifespan)
 app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(chores.router)
+app.include_router(flats.router)
+app.include_router(groceries.router)
+app.include_router(calendar_events.router)

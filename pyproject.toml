@@ -13,5 +13,5 @@ dependencies = [
     "pydantic-settings==2.8.1",
     "python-jose[cryptography]==3.3.0",
     "ruff>=0.14.13",
-    "sqlmodel==0.0.24",
+    "sqlmodel==0.0.31",
 ]
